@@ -3743,6 +3743,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			let posterror = null;
 
+			load_btn.classList.add("hide");
+
 			try {
 				let posts = [];
 				let hasMoreItems = true;
@@ -3981,6 +3983,8 @@ window.addEventListener('DOMContentLoaded', () => {
 				currentPagination.hasMore = false;
 				if (localPostLoadObserver) localPostLoadObserver.disconnect();
 			} finally {
+				load_btn.classList.remove("hide");
+
 				isLoadingMore = false;
 				const finalTrigger =
 					container.querySelector('.load-more-trigger');
@@ -4020,6 +4024,12 @@ window.addEventListener('DOMContentLoaded', () => {
 			},
 			{ rootMargin: '200px' },
 		);
+
+		const load_btn = document.createElement('button');
+		load_btn.className = 'load-more-btn';
+		load_btn.textContent = '更に読み込む';
+		load_btn.addEventListener('click', loadMore);
+		trigger.after(load_btn);
 
 		localPostLoadObserver.observe(trigger);
 	}
