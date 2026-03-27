@@ -4003,6 +4003,7 @@ window.addEventListener('DOMContentLoaded', () => {
 						options.subType === 'replies_only' ? 'replies' : type;
 
 					if (!currentPagination.hasMore) {
+            load_btn.remove();
 						finalTrigger.innerText =
 							container.querySelectorAll('.post').length === 0
 								? emptyMessages[emptyMessageKey] || ''
